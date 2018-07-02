@@ -9,6 +9,7 @@ public:
   double p_error;
   double i_error;
   double d_error;
+  double prev_cte;
 
   /*
   * Coefficients
@@ -16,6 +17,13 @@ public:
   double Kp;
   double Ki;
   double Kd;
+
+  /*
+   * Min and Max Steering
+   */
+  const double MAX_STEER = 1;
+  const double MIN_STEER = -1;
+
 
   /*
   * Constructor
@@ -31,6 +39,11 @@ public:
   * Initialize PID.
   */
   void Init(double Kp, double Ki, double Kd);
+
+  /*
+   * Computing the steering
+   */
+  double Steering();
 
   /*
   * Update the PID error variables given cross track error.
